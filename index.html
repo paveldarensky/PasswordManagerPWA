@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Manager PWA</title>
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<div class="container">
+    <div class="logo">
+        <img src="icons/lock.png" alt="logo">
+    </div>
+
+    <h1>Менеджер паролей</h1>
+
+    <form id="password-form">
+        <input type="text" id="site" placeholder="Сайт / URL" required>
+        <input type="text" id="login" placeholder="Логин" required>
+        <div class="password-field">
+            <input type="password" id="password" placeholder="Пароль">
+
+            <button type="button" id="togglePassword" class="icon-btn" title="Показать / скрыть">
+                <img id="eyeIcon" src="icons/eye.png" alt="eye">
+            </button>
+
+            <button type="button" id="copyPassword" class="icon-btn" title="Скопировать">
+                <img src="icons/copy.png" alt="copy">
+            </button>
+        </div>
+
+        <div class="buttons">
+            <button type="button" id="generate">Сгенерировать пароль</button>
+            <button type="submit">Сохранить</button>
+        </div>
+    </form>
+
+    <h2>Сохранённые пароли</h2>
+    <div id="passwords-scroll" class="passwords-scroll">
+        <div id="password-list"></div>
+    </div>
+</div>
+
+<script src="app.js"></script>
+<script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js');
+    }
+</script>
+</body>
+</html>
